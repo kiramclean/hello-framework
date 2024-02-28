@@ -1,0 +1,13 @@
+#!/usr/bin/env bb
+
+(def lat 38.90)
+(def long -77.04)
+
+(require '[cheshire.core :as json])
+
+(-> (str "https://api.weather.gov/points/" lat "," long)
+    slurp
+    json/parse-string
+    (get-in ["properties" "forecastHourly"])
+    slurp
+    println)
