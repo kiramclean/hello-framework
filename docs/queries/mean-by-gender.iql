@@ -1,0 +1,3 @@
+SELECT Gender, AVG(SalaryUSD), STD(SalaryUSD)
+FROM developer_records
+GROUP BY Gender

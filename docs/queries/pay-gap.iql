@@ -1,0 +1,9 @@
+SELECT (median_salary_men - median_salary_women)/median_salary_men AS pay_gap
+FROM
+    (SELECT MEDIAN(SalaryUSD) as median_salary_men
+     FROM developer_records
+     WHERE Gender = \"Man\"
+     CROSS JOIN
+         SELECT MEDIAN(SalaryUSD) as median_salary_women
+         FROM developer_records
+         WHERE Gender = \"Woman\")
